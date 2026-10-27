@@ -328,34 +328,28 @@ export const portfolioData: PortfolioItem[] = [
 
 export const reviews: Review[] = [
   {
-    name: "Vishal Randive",
+    name: "Pravin Povar",
     role: "Manager, Walstar Technologies",
     rating: 5,
-    text: "Swapnil consistently delivers high-quality backend and AI solutions. His work on Python, FastAPI and database architecture has been reliable, well-architected and production-ready.",
+    text: "Swapnil consistently delivers high-quality backend and AI solutions. His work on Python, FastAPI, and database architecture has been reliable, well-architected, and production-ready.",
   },
   {
-    name: "Prathamesh Patil",
-    role: "QA Engineer",
+    name: "Tejas Varute",
+    role: "Team Leader, Walstar Technologies",
     rating: 5,
-    text: "Having worked closely with Swapnil, I can say he writes clean, testable code with great attention to edge cases and unit testing. He is a fantastic teammate.",
+    text: "Swapnil is a dependable developer who tackles complex backend and data features with confidence. His strong grasp of Python, FastAPI, and database optimization made our sprints significantly smoother.",
   },
   {
-    name: "Corey Cawthron",
-    role: "Collaborator",
-    rating: 5,
-    text: "Swapnil contributed significantly to our AI and data workflows. Clean code, thoughtful backend architecture and fast API responses throughout. He is a joy to work with.",
-  },
-  {
-    name: "Vikas Vitekari",
-    role: "Team Lead",
-    rating: 5,
-    text: "Swapnil is a dependable developer who tackles complex backend and data features with confidence. His strong grasp of Python and database optimization made our sprints smoother.",
-  },
-  {
-    name: "Sana Jamadar",
+    name: "Langmanna Sir",
     role: "Assistant Manager, Walstar Technologies",
     rating: 5,
-    text: "Swapnil is proactive, detail-oriented and technically sharp. He consistently meets deadlines and elevates the quality of every project he contributes to.",
+    text: "Swapnil is proactive, detail-oriented, and technically sharp. He consistently meets sprint deadlines and elevates the engineering quality of every project he contributes to.",
+  },
+  {
+    name: "Talha",
+    role: "QA Engineer, Walstar Technologies",
+    rating: 5,
+    text: "Having worked closely with Swapnil on testing and releases, I can say he writes clean, testable code with great attention to edge cases and Pytest coverage. His APIs are robust and smooth to validate.",
   },
 ];
 
