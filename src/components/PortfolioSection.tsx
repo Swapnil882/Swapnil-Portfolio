@@ -59,15 +59,15 @@ const PortfolioSection: React.FC<PortfolioSectionProps> = ({
           cardType="portfolio"
         />
 
-        <div className="w-full max-w-[947px] flex flex-wrap justify-center gap-4 sm:gap-[14px] items-center">
+        <div className="w-full max-w-[947px] flex flex-wrap justify-center gap-3 sm:gap-4 items-center">
           {buttons.map((text) => (
             <button
               key={text}
               onClick={() => setActiveFilter(text)}
-              className={`px-6 sm:px-8 py-3 rounded-[24px] text-sm sm:text-base transition-colors duration-300 ${
+              className={`px-6 sm:px-8 py-2.5 sm:py-3 rounded-full text-sm sm:text-base font-semibold transition-all duration-300 cursor-pointer ${
                 activeFilter === text
-                  ? 'bg-[#FD853A] text-white'
-                  : 'bg-[#F2F4F7] text-[#000000] hover:bg-[#FD853A] hover:text-white'
+                  ? 'bg-[#FD853A] text-white shadow-lg shadow-[#FD853A]/25 scale-[1.02]'
+                  : 'bg-[#F2F4F7] text-[#344054] hover:bg-[#FD853A] hover:text-white'
               }`}
             >
               {text}
