@@ -1,6 +1,5 @@
 import Image from 'next/image';
-import Link from 'next/link';
-import ArrowButton from './ArrowButton';
+import { Lock, ExternalLink, Github, ArrowUpRight } from 'lucide-react';
 import { PortfolioItem } from '@/data/data';
 
 interface PortfolioCardProps extends PortfolioItem {
@@ -16,136 +15,163 @@ const PortfolioCard: React.FC<PortfolioCardProps> = ({
   category,
   liveDemo,
   github,
-  caseStudy,
   priority = false,
 }) => {
-  const actionButtons = [
-    { label: "Live Demo", url: liveDemo },
-    { label: "GitHub", url: github },
-    { label: "Case Study", url: caseStudy },
-  ].filter((btn) => Boolean(btn.url) && btn.url.trim() !== "" && btn.url !== "#");
+  const hasLiveDemo = Boolean(liveDemo && liveDemo.trim() !== "" && liveDemo !== "#");
+  const hasGithub = Boolean(github && github.trim() !== "" && github !== "#");
+  const hasDirectLink = Boolean(href && href.trim() !== "" && href !== "#");
+  const primaryCategory = category && category.length > 0 ? category[0] : (tags[0] || "Project");
 
-  const hasLink = Boolean(href && href.trim() !== "" && href !== "#");
-  const primaryCategory = category && category.length > 0 ? category[0] : null;
+  // Format clean address bar URL
+  const getDisplayUrl = () => {
+    if (hasLiveDemo && liveDemo) {
+      try {
+        const parsed = new URL(liveDemo);
+        return parsed.hostname.replace(/^www\./, "");
+      } catch {
+        return liveDemo.replace(/^https?:\/\//, "").replace(/\/$/, "");
+      }
+    }
+    if (title.toLowerCase().includes("bynaus")) return "app.bynaus.ai";
+    if (title.toLowerCase().includes("walstar")) return "walstareducation.com";
+    if (title.toLowerCase().includes("chatbot")) return "ai-assistant.local:8000";
+    if (title.toLowerCase().includes("feedback")) return "feedback-system.org";
+    if (title.toLowerCase().includes("movie")) return "sentiment-nlp.ai";
+    return `${title.toLowerCase().replace(/[^a-z0-9]/g, "-")}.app`;
+  };
+
+  const displayUrl = getDisplayUrl();
 
   return (
     <div
-      className="relative group 
-        w-full 
-        md:w-[633px] h-[280px] sm:h-[320px] md:h-[371px] 
-        md:max-w-none 
-        rounded-[18px] md:rounded-[22px] 
-        overflow-hidden transition-all duration-300 cursor-pointer 
-        shadow-lg border border-black/10 bg-[#161616]"
+      className="group relative w-full h-full flex flex-col rounded-2xl sm:rounded-3xl 
+        bg-[#141414] border border-white/10 hover:border-[#FD853A]/50 
+        transition-all duration-300 shadow-xl hover:shadow-2xl hover:shadow-[#FD853A]/10 
+        overflow-hidden cursor-pointer"
       style={{
         boxShadow: '0 10px 30px -10px rgba(0, 0, 0, 0.4)',
       }}
     >
-      {/* Background Image with smooth zoom on hover */}
-      <Image
-        src={image}
-        alt={title}
-        fill
-        className="object-cover object-top z-0 transition-transform duration-700 ease-out group-hover:scale-105"
-        priority={priority}
-      />
-
-      {/* Multi-stop Scrim Gradient - guarantees crystal-clear text readability on white or dark backgrounds */}
-      <div
-        className="absolute inset-0 z-10 pointer-events-none transition-opacity duration-300"
-        style={{
-          background:
-            'linear-gradient(to top, rgba(0, 0, 0, 0.88) 0%, rgba(0, 0, 0, 0.55) 45%, rgba(0, 0, 0, 0.15) 75%, rgba(0, 0, 0, 0.25) 100%)',
-        }}
-      />
-
-      {/* Content Layer */}
-      <div className="relative z-20 w-full h-full flex flex-col justify-between">
-        {/* Top Header: Category Tag & External Link */}
-        <div className="flex items-center justify-between p-3.5 sm:p-4 md:p-5 min-h-[52px] md:min-h-[64px]">
-          {primaryCategory ? (
-            <span className="px-3 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/15 text-[11px] sm:text-xs font-semibold text-[#FD853A] tracking-wider uppercase shadow-sm">
-              {primaryCategory}
-            </span>
-          ) : (
-            <div />
-          )}
-
-          {hasLink ? (
-            <Link
-              href={href}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={`Visit ${title}`}
-              className="w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-black/60 backdrop-blur-md border border-[#FD853A]/80 hover:bg-[#FD853A] hover:border-[#FD853A] flex items-center justify-center transition-all duration-300 group/btn shadow-md"
-            >
-              <ArrowButton className="transition-all duration-300 stroke-[#FD853A] group-hover/btn:stroke-white w-4 h-4 sm:w-5 sm:h-5" />
-            </Link>
-          ) : null}
+      {/* 1. Browser Shell Window Header */}
+      <div className="bg-[#1c1c1c] border-b border-white/10 px-3.5 sm:px-4 py-2.5 flex items-center justify-between select-none">
+        {/* macOS Traffic Lights */}
+        <div className="flex items-center gap-1.5 shrink-0">
+          <span className="w-2.5 h-2.5 rounded-full bg-[#FF5F56]/85 group-hover:bg-[#FF5F56] transition-colors" />
+          <span className="w-2.5 h-2.5 rounded-full bg-[#FFBD2E]/85 group-hover:bg-[#FFBD2E] transition-colors" />
+          <span className="w-2.5 h-2.5 rounded-full bg-[#27C93F]/85 group-hover:bg-[#27C93F] transition-colors" />
         </div>
 
-        {/* Unhovered Bottom Info Bar (Smoothly fades out on hover to avoid collision) */}
-        <div className="p-4 sm:p-5 md:p-6 transition-all duration-300 ease-out group-hover:opacity-0 group-hover:translate-y-2 pointer-events-none">
-          <h2 className="text-xl sm:text-2xl md:text-[28px] font-bold text-white tracking-tight drop-shadow-lg leading-tight">
-            {title}
-          </h2>
-          <p className="text-xs sm:text-sm text-zinc-300 line-clamp-1 mt-1 font-medium drop-shadow">
+        {/* Address Bar Pill */}
+        <div className="flex items-center gap-1.5 px-3 py-1 rounded-md bg-black/40 border border-white/10 text-[11px] text-zinc-400 font-mono max-w-[180px] sm:max-w-[240px] truncate">
+          <Lock size={10} className="text-[#FD853A] shrink-0" />
+          <span className="truncate">{displayUrl}</span>
+        </div>
+
+        {/* Category Pill */}
+        <div className="shrink-0">
+          <span className="text-[10px] font-semibold uppercase tracking-wider text-[#FD853A] px-2 py-0.5 rounded-full bg-[#FD853A]/10 border border-[#FD853A]/20">
+            {primaryCategory}
+          </span>
+        </div>
+      </div>
+
+      {/* 2. Browser Viewport Screen (Screenshot Mockup) */}
+      <div className="relative w-full aspect-[16/10] bg-[#1a1a1a] overflow-hidden border-b border-white/10">
+        <Image
+          src={image}
+          alt={title}
+          fill
+          className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+          priority={priority}
+        />
+        {/* Subtle glass reflection overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent pointer-events-none opacity-40 group-hover:opacity-10 transition-opacity" />
+      </div>
+
+      {/* 3. Below-the-fold Content Section */}
+      <div className="p-5 sm:p-6 flex flex-col flex-1 justify-between gap-4 bg-[#141414]">
+        {/* Title & Description */}
+        <div>
+          <div className="flex items-start justify-between gap-3">
+            <h3 className="text-xl sm:text-2xl font-bold text-white group-hover:text-[#FD853A] transition-colors tracking-tight leading-tight">
+              {title}
+            </h3>
+
+            {hasLiveDemo ? (
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/25 text-[10px] font-semibold tracking-wider uppercase shrink-0">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                Live Demo
+              </span>
+            ) : (
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-white/5 text-zinc-400 border border-white/10 text-[10px] font-medium tracking-wide uppercase shrink-0">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#FD853A]" />
+                Production
+              </span>
+            )}
+          </div>
+
+          <p className="text-zinc-400 text-xs sm:text-sm leading-relaxed mt-2.5 line-clamp-3">
             {desc}
           </p>
         </div>
 
-        {/* Hover Overlay with Full Details, Badges & Actions */}
-        <div
-          className="absolute inset-x-3 bottom-3 sm:inset-x-4 sm:bottom-4 md:inset-x-5 md:bottom-5
-            bg-[#141414]/94 backdrop-blur-xl border border-white/15 rounded-xl sm:rounded-2xl
-            p-4 sm:p-5 md:p-6
-            opacity-0 translate-y-4 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto
-            transition-all duration-400 ease-out z-30 shadow-2xl flex flex-col justify-between"
-        >
-          <div>
-            <div className="flex items-center justify-between gap-2 mb-1.5">
-              <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-white leading-tight">
-                {title}
-              </h3>
-              {primaryCategory && (
-                <span className="text-[10px] sm:text-xs font-semibold uppercase tracking-wider text-[#FD853A] shrink-0">
-                  {primaryCategory}
-                </span>
-              )}
-            </div>
+        {/* Tech Stack Badges */}
+        <div className="flex flex-wrap gap-1.5 pt-1">
+          {tags.map((tag) => (
+            <span
+              key={tag}
+              className="px-2.5 py-1 rounded-full bg-white/[0.05] hover:bg-[#FD853A]/15 border border-white/10 hover:border-[#FD853A]/40 text-zinc-300 hover:text-white text-[11px] sm:text-xs font-medium transition-colors"
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
 
-            <p className="text-zinc-300 text-xs sm:text-sm leading-relaxed line-clamp-3 sm:line-clamp-4 mt-1">
-              {desc}
-            </p>
+        {/* Actions Footer */}
+        <div className="flex items-center justify-between pt-3 border-t border-white/10 mt-auto">
+          <div className="flex items-center gap-2">
+            {hasLiveDemo && (
+              <a
+                href={liveDemo}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-[#FD853A] hover:bg-[#e46e24] text-white text-xs sm:text-sm font-semibold transition-all duration-200 shadow-md shadow-[#FD853A]/20 hover:scale-[1.02]"
+              >
+                <span>Launch Demo</span>
+                <ExternalLink size={13} />
+              </a>
+            )}
 
-            {/* Tech Badges */}
-            <div className="flex flex-wrap gap-1.5 mt-3">
-              {tags.map((tag) => (
-                <span
-                  key={tag}
-                  className="px-2.5 py-0.5 sm:py-1 rounded-full bg-white/10 border border-white/10 text-white text-[11px] sm:text-xs font-medium"
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
+            {hasGithub && (
+              <a
+                href={github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 text-zinc-300 hover:text-white text-xs sm:text-sm font-medium transition-colors"
+              >
+                <Github size={14} />
+                <span>Code</span>
+              </a>
+            )}
+
+            {!hasLiveDemo && !hasGithub && (
+              <span className="inline-flex items-center gap-1.5 text-xs text-zinc-400 font-medium py-1">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#FD853A]" />
+                Enterprise Platform
+              </span>
+            )}
           </div>
 
-          {/* Action Buttons (Only rendered when active URLs exist) */}
-          {actionButtons.length > 0 && (
-            <div className="flex flex-wrap gap-2.5 mt-4 pt-3 border-t border-white/10">
-              {actionButtons.map((btn) => (
-                <a
-                  key={btn.label}
-                  href={btn.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-4 py-1.5 rounded-full bg-[#FD853A] hover:bg-[#e46e24] text-white text-xs sm:text-sm font-semibold transition-colors duration-200 shadow-md shadow-[#FD853A]/25"
-                >
-                  {btn.label}
-                </a>
-              ))}
-            </div>
+          {hasDirectLink && !hasLiveDemo && (
+            <a
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-xs text-zinc-400 hover:text-[#FD853A] font-medium flex items-center gap-1 transition-colors"
+            >
+              <span>Explore</span>
+              <ArrowUpRight size={14} />
+            </a>
           )}
         </div>
       </div>
