@@ -225,7 +225,7 @@ export default function Home() {
             ))}
           </div>
 
-          <ScrollToContactButton className="w-full cursor-pointer sm:w-auto px-6 py-3.5 rounded-[60px] border border-[#151515] text-[#151515] font-semibold text-base sm:text-lg transition-all duration-300 hover:bg-[#151515] hover:text-white">
+          <ScrollToContactButton className="w-full cursor-pointer sm:w-auto px-8 py-3.5 rounded-[60px] border border-[#151515] text-[#151515] font-semibold text-base sm:text-lg transition-all duration-300 hover:bg-[#151515] hover:text-white active:scale-95 shadow-xs hover:shadow-md select-none">
             Hire me
           </ScrollToContactButton>
         </div>
