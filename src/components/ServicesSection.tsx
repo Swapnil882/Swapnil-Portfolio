@@ -262,7 +262,8 @@ export default function ServicesSection() {
   };
 
   return (
-    <div id="about" className="services-wrapper md:-mt-14">
+    <div id="about" className="services-wrapper md:-mt-14 scroll-mt-20 relative">
+      <div id="services" className="absolute -top-20" />
       <div className="services-bg" />
 
       <section className="services-sec">
