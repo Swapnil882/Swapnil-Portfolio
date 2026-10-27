@@ -18,6 +18,14 @@ const PortfolioCard: React.FC<PortfolioCardProps> = ({
   caseStudy,
   priority = false,
 }) => {
+  const actionButtons = [
+    { label: "Live Demo", url: liveDemo },
+    { label: "GitHub", url: github },
+    { label: "Case Study", url: caseStudy },
+  ].filter((btn) => Boolean(btn.url) && btn.url.trim() !== "" && btn.url !== "#");
+
+  const hasLink = Boolean(href && href.trim() !== "" && href !== "#");
+
   return (
     <div
       className="relative group 
@@ -53,17 +61,19 @@ const PortfolioCard: React.FC<PortfolioCardProps> = ({
       {/* Content */}
       <div className="relative z-20 w-full h-full flex flex-col justify-between">
         {/* Top-right Button */}
-        <div className="flex justify-end p-2 md:p-4">
-          <Link href={href}>
-            <div className="w-[40px] h-[40px] md:w-[60px] md:h-[60px] 
-              rounded-full border-2 border-[#FD853A] 
-              group-hover:bg-[#FD853A] 
-              flex items-center justify-center 
-              transition-all duration-300"
-            >
-              <ArrowButton className="transition-all duration-300 stroke-[#FD853A] group-hover:stroke-white" />
-            </div>
-          </Link>
+        <div className="flex justify-end p-2 md:p-4 min-h-[50px] md:min-h-[70px]">
+          {hasLink ? (
+            <Link href={href} target="_blank" rel="noopener noreferrer">
+              <div className="w-[40px] h-[40px] md:w-[60px] md:h-[60px] 
+                rounded-full border-2 border-[#FD853A] 
+                group-hover:bg-[#FD853A] 
+                flex items-center justify-center 
+                transition-all duration-300"
+              >
+                <ArrowButton className="transition-all duration-300 stroke-[#FD853A] group-hover:stroke-white" />
+              </div>
+            </Link>
+          ) : null}
         </div>
 
         {/* Title */}
@@ -103,23 +113,21 @@ const PortfolioCard: React.FC<PortfolioCardProps> = ({
           </div>
 
           {/* Action Buttons */}
-          <div className="flex flex-wrap justify-center md:justify-start gap-2 mt-3">
-            {[
-              { label: "Live Demo", url: liveDemo },
-              { label: "GitHub", url: github },
-              { label: "Case Study", url: caseStudy },
-            ].map((btn) => (
-              <a
-                key={btn.label}
-                href={btn.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-4 py-2 rounded-full border border-[#FD853A] text-white text-xs md:text-sm font-medium hover:bg-[#FD853A] transition-colors duration-300"
-              >
-                {btn.label}
-              </a>
-            ))}
-          </div>
+          {actionButtons.length > 0 && (
+            <div className="flex flex-wrap justify-center md:justify-start gap-2 mt-3">
+              {actionButtons.map((btn) => (
+                <a
+                  key={btn.label}
+                  href={btn.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-4 py-2 rounded-full border border-[#FD853A] text-white text-xs md:text-sm font-medium hover:bg-[#FD853A] transition-colors duration-300"
+                >
+                  {btn.label}
+                </a>
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </div>

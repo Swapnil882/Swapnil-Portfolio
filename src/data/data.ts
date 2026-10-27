@@ -283,13 +283,13 @@ export const portfolioData: PortfolioItem[] = [
   {
     image: "/walstar_education.png",
     title: "Walstar Education",
-    href: "https://walstareducation.com",
+    href: "#",
     desc: "Multi-tenant School Cloud SaaS platform where schools can register and auto-generate dedicated portals to manage student records, staff workflows, and generate automated AI question papers and auto-graded exams with analytics.",
     tags: ["Python", "FastAPI", "PostgreSQL", "AI Question Gen", "React", "REST APIs"],
     category: ["AI/ML", "Backend", "Web Apps"],
-    liveDemo: "https://walstareducation.com",
-    github: "https://github.com/Swapnil882",
-    caseStudy: "#",
+    liveDemo: "",
+    github: "",
+    caseStudy: "",
   },
   {
     image: "/chatbot_support.png",
