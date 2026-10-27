@@ -118,9 +118,9 @@ export default function Home() {
 
       {/* Hire Me */}
       <div className="w-full flex flex-col lg:flex-row items-center justify-between px-6 lg:px-[71px] py-10 lg:py-12 bg-[#F2F4F7] rounded-[32px] lg:rounded-[50px] gap-12 lg:gap-[96px]">
-        <div className="relative w-full max-w-[440px] sm:max-w-[470px] lg:max-w-[500px] aspect-square group mx-auto lg:mx-0 flex items-center justify-center cursor-pointer select-none">
-          {/* Layer 1: Concentric Decorative Circles (Property 1=Variant2.svg) - Expands & blossoms on hover */}
-          <div className="absolute inset-0 z-0 flex items-center justify-center pointer-events-none">
+        <div className="relative w-full max-w-[440px] sm:max-w-[480px] lg:max-w-[510px] aspect-[624/680] group mx-auto lg:mx-0 flex items-center justify-center cursor-pointer select-none">
+          {/* Layer 1: Concentric Decorative Circles (Property 1=Variant2.svg) - Clearly visible, blooms/opens on hover */}
+          <div className="absolute inset-0 z-0 flex items-center justify-center pointer-events-none overflow-visible">
             <svg
               viewBox="0 0 624 680"
               className="w-full h-full object-contain pointer-events-none overflow-visible"
@@ -132,57 +132,57 @@ export default function Home() {
                 cy="312"
                 r="311.5"
                 stroke="#FD853A"
-                strokeWidth="1"
-                className="origin-[312px_312px] transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] scale-75 opacity-20 group-hover:scale-100 group-hover:opacity-100 delay-[250ms]"
+                strokeWidth="1.5"
+                className="origin-[312px_312px] transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] scale-100 opacity-60 group-hover:scale-[1.18] group-hover:opacity-100 delay-[200ms]"
               />
               <circle
                 cx="312"
                 cy="312"
                 r="294"
                 stroke="#FD853A"
-                strokeWidth="2"
-                className="origin-[312px_312px] transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] scale-75 opacity-30 group-hover:scale-100 group-hover:opacity-100 delay-[200ms]"
+                strokeWidth="2.2"
+                className="origin-[312px_312px] transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] scale-100 opacity-70 group-hover:scale-[1.14] group-hover:opacity-100 delay-[160ms]"
               />
               <circle
                 cx="312"
                 cy="312"
                 r="274.5"
                 stroke="#FD853A"
-                strokeWidth="3"
-                className="origin-[312px_312px] transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] scale-75 opacity-40 group-hover:scale-100 group-hover:opacity-100 delay-[150ms]"
+                strokeWidth="3.2"
+                className="origin-[312px_312px] transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] scale-100 opacity-80 group-hover:scale-[1.10] group-hover:opacity-100 delay-[120ms]"
               />
               <circle
                 cx="312"
                 cy="312"
                 r="251"
                 stroke="#FD853A"
-                strokeWidth="4"
-                className="origin-[312px_312px] transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] scale-75 opacity-55 group-hover:scale-100 group-hover:opacity-100 delay-[100ms]"
+                strokeWidth="4.2"
+                className="origin-[312px_312px] transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] scale-100 opacity-90 group-hover:scale-[1.07] group-hover:opacity-100 delay-[80ms]"
               />
               <circle
                 cx="312"
                 cy="312"
                 r="230"
                 stroke="#FD853A"
-                strokeWidth="5"
-                className="origin-[312px_312px] transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] scale-80 opacity-70 group-hover:scale-100 group-hover:opacity-100 delay-[50ms]"
+                strokeWidth="5.2"
+                className="origin-[312px_312px] transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] scale-100 opacity-95 group-hover:scale-[1.04] group-hover:opacity-100 delay-[40ms]"
               />
               <circle
                 cx="312"
                 cy="312"
                 r="205"
                 stroke="#FD853A"
-                strokeWidth="6"
-                className="origin-[312px_312px] transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] scale-85 opacity-85 group-hover:scale-100 group-hover:opacity-100"
+                strokeWidth="6.2"
+                className="origin-[312px_312px] transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] scale-100 opacity-100 group-hover:scale-[1.02] group-hover:opacity-100"
               />
             </svg>
           </div>
 
-          {/* Layer 2: Orange Rounded Backdrop Badge */}
-          <div className="absolute z-1 w-[62%] sm:w-[60%] h-[72%] sm:h-[70%] bottom-[4%] bg-[#FD853A] rounded-[42px] sm:rounded-[56px] shadow-sm pointer-events-none transition-transform duration-500 ease-out group-hover:scale-[1.02]" />
+          {/* Layer 2: Orange Arched Backdrop Badge */}
+          <div className="absolute z-1 w-[68%] sm:w-[66%] h-[74%] sm:h-[72%] bottom-0 bg-[#FD853A] rounded-t-[100px] sm:rounded-t-[130px] rounded-b-[40px] sm:rounded-b-[48px] shadow-sm pointer-events-none transition-transform duration-500 ease-out group-hover:scale-[1.02]" />
 
           {/* Layer 3: Person Cutout (Swapnil Dalavi) */}
-          <div className="relative z-10 w-[88%] h-[94%] bottom-0 flex items-end justify-center pointer-events-none">
+          <div className="relative z-10 w-[92%] h-[94%] bottom-0 flex items-end justify-center pointer-events-none">
             <Image
               src="/hire_me.png"
               alt="Why Hire Me - Swapnil Dalavi"
