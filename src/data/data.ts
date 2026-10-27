@@ -347,7 +347,7 @@ export const reviews: Review[] = [
   },
   {
     name: "Talha",
-    role: "QA Engineer, Walstar Technologies",
+    role: "QA Engineer",
     rating: 5,
     text: "Having worked closely with Swapnil on testing and releases, I can say he writes clean, testable code with great attention to edge cases and Pytest coverage. His APIs are robust and smooth to validate.",
   },
