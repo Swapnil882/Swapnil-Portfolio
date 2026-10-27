@@ -1,0 +1,138 @@
+import React from "react";
+import { GithubIcon, LinkedinIcon, TwitterIcon, InstagramIcon, YoutubeIcon, Code2, MailIcon, PhoneIcon, MapPinIcon } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
+import CustomeText from "./ui/CustomeText";
+import Link from "next/link";
+import ClientOnly from "./ui/ClientOnly";
+import { ScrollToContactButton, NewsletterButton } from "./ui/ActionButtons";
+import { navItems, contact } from "@/data/data";
+
+const Footer = () => {
+    const socials = [
+        { icon: GithubIcon, url: contact.github },
+        { icon: LinkedinIcon, url: contact.linkedin },
+        { icon: TwitterIcon, url: contact.twitter },
+        { icon: InstagramIcon, url: contact.instagram },
+        { icon: YoutubeIcon, url: contact.youtube },
+        { icon: Code2, url: contact.leetcode },
+    ].filter((item) => Boolean(item.url));
+
+    const contactInfo = [
+        { icon: MailIcon, label: contact.email },
+        { icon: PhoneIcon, label: contact.phone },
+        { icon: MapPinIcon, label: contact.location },
+    ];
+
+    return (
+        <footer className="w-full min-h-[400px] lg:min-h-[680px] px-4 sm:px-6 lg:px-[71px] py-[30px] sm:py-[35px] lg:py-[40px] flex flex-col bg-[#272727] rounded-t-2xl sm:rounded-t-3xl text-white justify-between">
+
+            {/* Top Section */}
+            <div className="w-full flex flex-col lg:flex-row items-center justify-between gap-6">
+                <h1 className="font-semibold leading-tight text-3xl sm:text-4xl lg:text-5xl xl:text-[48px] text-[#FCFCFD] text-center lg:text-left">
+                    Let&apos;s Build Something Amazing Together
+                </h1>
+                <ClientOnly>
+                    <ScrollToContactButton className="group flex items-center justify-center gap-2 w-full sm:w-[140px] lg:w-[150px] h-[44px] sm:h-[46px] lg:h-[48px] px-4 sm:px-5 py-2 text-white text-sm sm:text-base font-semibold rounded-full bg-[#FD853A] cursor-pointer hover:bg-[#e46e24] transition-colors">
+                        Hire Me
+                        <ArrowUpRight
+                            size={20}
+                            className="sm:w-5 sm:h-5 lg:w-5 lg:h-5 transition-transform duration-300 group-hover:rotate-45"
+                        />
+                    </ScrollToContactButton>
+                </ClientOnly>
+            </div>
+
+            <div className="border border-[#475467] w-full mt-6 md:mt-0"></div>
+
+            {/* Navigation Links */}
+            <div className="flex flex-col lg:grid lg:grid-cols-12 lg:gap-8 w-full max-w-[1298px] gap-8 mt-8 md:mt-0">
+
+                <div className="w-full lg:col-span-5 flex flex-col items-start justify-start gap-6 lg:gap-10">
+                    <div className="flex gap-3 sm:gap-4 items-center flex-shrink-0 cursor-pointer">
+                        <div className="w-8 h-8 sm:w-9 sm:h-9 lg:w-10 lg:h-10 bg-[#FD853A] rounded-full flex items-center justify-center mb-1">
+                            <svg width="20" height="20" className="sm:w-6 sm:h-6 lg:w-6 lg:h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <text x="4" y="18" fontSize="12" className="sm:text-sm lg:text-base" fontWeight="bold" fill="white">SD</text>
+                            </svg>
+                        </div>
+                        <span className="font-bold text-base tracking-wide cursor-pointer">Swapnil Dalavi</span>
+                    </div>
+                    <p className="w-full text-sm sm:text-base lg:text-[16px] text-[#FCFCFD]">
+                        Python Developer & Data Science Enthusiast passionate about building scalable backend architectures, REST APIs, and data-driven systems.
+                    </p>
+                    <div className="flex gap-2 sm:gap-2.5">
+                        {socials.map((item, idx) => {
+                            const Icon = item.icon;
+                            return (
+                                <Link
+                                    key={idx}
+                                    href={item.url}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="w-8 h-8 sm:w-9 sm:h-9 lg:w-10 lg:h-10 rounded-full flex hover:scale-110 transition-transform bg-[#333333] hover:bg-[#444444] items-center justify-center"
+                                >
+                                    <Icon size={16} className="sm:w-5 sm:h-5 lg:w-5 lg:h-5 text-[#FD853A]" />
+                                </Link>
+                            );
+                        })}
+                    </div>
+                </div>
+
+                <div className="lg:col-span-2 flex flex-col gap-5 lg:gap-7">
+                    <CustomeText title="Navigation" className="text-base lg:text-[16px] font-semibold text-[#FD853A]" />
+                    <div className="flex flex-col gap-3 lg:gap-5">
+                        {navItems.map((key, idx) => (
+                            <Link href={`#${key.toLowerCase()}`} key={idx} className="text-[#FCFCFD] text-sm lg:text-[14px] cursor-pointer hover:text-[#FD853A] transition-colors">
+                                {key}
+                            </Link>
+                        ))}
+                    </div>
+                </div>
+
+                <div className="lg:col-span-2 flex flex-col gap-5 lg:gap-7">
+                    <CustomeText title="Contact" className="text-base lg:text-[16px] font-semibold text-[#FD853A]" />
+                    <div className="flex flex-col gap-3 lg:gap-5">
+                        {contactInfo.map((item, idx) => {
+                            const Icon = item.icon;
+                            return (
+                                <span key={idx} className="flex items-center gap-2 text-[#FCFCFD] text-sm lg:text-[14px] cursor-pointer hover:text-[#FD853A] transition-colors">
+                                    <Icon size={16} className="text-[#FD853A] flex-shrink-0" />
+                                    {item.label}
+                                </span>
+                            );
+                        })}
+                    </div>
+                </div>
+
+                <div className="lg:col-span-3 flex flex-col gap-5 lg:gap-7 items-start">
+                    <CustomeText
+                        title="Get the latest information"
+                        className="text-base lg:text-[16px] font-semibold text-[#FD853A]"
+                    />
+                    <div className="relative w-full h-[45px] sm:h-[48px] lg:h-[51px]">
+                        <ClientOnly>
+                            <input
+                                type="text"
+                                placeholder="Email Address"
+                                className="w-full h-full bg-white text-black text-sm px-3 sm:px-4 py-2 sm:py-3 pr-12 rounded-[8px] sm:rounded-[10px] border-none outline-none"
+                            />
+                            <NewsletterButton className="absolute top-0 right-0 h-full w-[45px] sm:w-[48px] lg:w-[51px] bg-[#FD853A] rounded-r-[8px] sm:rounded-r-[10px] flex items-center justify-center cursor-pointer hover:bg-[#e46e24] transition-colors">
+                                <svg width="20" height="21" className="sm:w-6 sm:h-6 lg:w-6 lg:h-6" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M6.29602 3.48708C3.91012 2.38589 1.36183 4.66673 2.19279 7.15964L3.45424 10.9007C3.59136 11.3074 3.97267 11.5812 4.40182 11.5812H13C13.5523 11.5812 14 12.0289 14 12.5812C14 13.1335 13.5523 13.5812 13 13.5812H4.40182C3.97267 13.5812 3.59136 13.855 3.45424 14.2617L2.19281 18.0028C1.36183 20.4957 3.91012 22.7765 6.29603 21.6754L20.0983 15.3051C22.422 14.2326 22.422 10.9299 20.0983 9.85737L6.29602 3.48708Z" fill="#FCFCFD" />
+                                </svg>
+                            </NewsletterButton>
+                        </ClientOnly>
+                    </div>
+                </div>
+            </div>
+
+            <div className="border border-[#475467] w-full mt-8 lg:mt-0"></div>
+
+            <div className="flex flex-col sm:flex-row w-full max-w-[1298px] h-auto lg:h-[26px] items-start justify-between gap-4 sm:gap-0 mt-6 md:mt-0">
+                <p className="w-full sm:w-[415px] h-auto lg:h-[26px] text-sm sm:text-base lg:text-[16px] text-white text-center sm:text-left">© 2026 Swapnil Dalavi. All Rights Reserved.</p>
+                <Link href={"#"} className="w-full sm:w-fit h-auto lg:h-[26px] text-sm sm:text-base lg:text-[16px] text-white text-center sm:text-right hover:text-[#FD853A] transition-colors">Privacy Policy</Link>
+            </div>
+        </footer>
+    );
+};
+
+export default Footer;
