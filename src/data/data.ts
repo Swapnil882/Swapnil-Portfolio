@@ -80,11 +80,11 @@ export const hero = {
   prefix: "I'm",
   name: "Swapnil",
   lastName: "Dalavi,",
-  headline: "Python Developer & Data Science Enthusiast",
+  headline: "Python Developer & AI Engineer",
   intro:
-    "Python Backend Developer building scalable systems, REST APIs, and ML/AI pipelines in production. Currently engineering backend pipelines for Bynaus AI (Construction Takeoff Platform) at Walstar Technologies using Python, FastAPI, PostgreSQL/PostGIS, MongoDB, and AWS S3.",
+    "Building scalable applications, robust backend systems, and intelligent AI solutions that solve real-world problems.",
   quoteLine1: "I don't just write code.",
-  quoteLine2: "I build scalable backend systems & data-driven solutions.",
+  quoteLine2: "I build scalable backend systems & intelligent AI solutions.",
   years: "1 Year",
   experienceLabel: "Experience",
 };

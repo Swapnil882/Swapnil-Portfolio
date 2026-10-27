@@ -41,9 +41,15 @@ export default function Home() {
                 <CustomeText title={ hero.lastName} className="text-[#171717] font-semibold text-4xl sm:text-5xl md:text-7xl xl:text-[70px]" />
               </div>
             </div>
-            <CustomeText title={hero.headline} className="text-[#171717] font-semibold text-lg sm:text-2xl md:text-3xl xl:text-4xl xl:whitespace-nowrap text-center -mt-1" />
-            <p className="mt-3 w-full min-w-0 text-center text-[#344054] text-sm md:text-base lg:text-lg leading-relaxed">
-              {hero.intro}
+            <div className="flex flex-wrap items-center justify-center gap-x-2.5 gap-y-1 text-xl sm:text-2xl md:text-3xl lg:text-[34px] font-bold text-center -mt-0.5 tracking-tight">
+              <span className="text-[#171717]">Python Developer</span>
+              <span className="text-[#FD853A] font-light">&amp;</span>
+              <span className="bg-gradient-to-r from-[#FD853A] via-[#ff7a29] to-[#fa5d00] bg-clip-text text-transparent">
+                AI Engineer
+              </span>
+            </div>
+            <p className="mt-3.5 max-w-[640px] text-center text-[#475467] text-sm sm:text-base md:text-[17px] leading-relaxed font-normal">
+              Building <span className="text-[#101828] font-medium">scalable applications</span>, <span className="text-[#101828] font-medium">robust backend systems</span>, and <span className="text-[#FD853A] font-semibold">intelligent AI solutions</span> that solve real-world problems.
             </p>
 
             <div className="lg:hidden flex flex-col items-center justify-center mt-6 w-full">
