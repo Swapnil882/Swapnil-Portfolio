@@ -118,70 +118,32 @@ export default function Home() {
 
       {/* Hire Me */}
       <div className="w-full flex flex-col lg:flex-row items-center justify-between px-6 lg:px-[71px] py-10 lg:py-12 bg-[#F2F4F7] rounded-[32px] lg:rounded-[50px] gap-12 lg:gap-[96px]">
-        <div className="relative w-full max-w-[440px] aspect-[2/3] group mx-auto lg:mx-0 flex items-end justify-center cursor-pointer select-none">
-          {/* Animated Concentric Arch Rings (Expands open on cursor hover) */}
-          <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0">
-            <svg
-              viewBox="0 0 460 520"
-              className="w-[125%] h-[125%] -translate-y-6 transition-all duration-500 ease-out opacity-0 scale-75 group-hover:opacity-100 group-hover:scale-100"
-              fill="none"
-            >
-              <path
-                d="M 105 440 L 105 250 A 125 125 0 0 1 355 250 L 355 440"
-                stroke="#FD853A"
-                strokeWidth="1.8"
-                className="transition-all duration-500 ease-out"
-                strokeOpacity="0.45"
-              />
-              <path
-                d="M 85 440 L 85 250 A 145 145 0 0 1 375 250 L 375 440"
-                stroke="#FD853A"
-                strokeWidth="1.8"
-                className="transition-all duration-500 ease-out delay-75"
-                strokeOpacity="0.6"
-              />
-              <path
-                d="M 65 440 L 65 250 A 165 165 0 0 1 395 250 L 395 440"
-                stroke="#FD853A"
-                strokeWidth="2"
-                className="transition-all duration-500 ease-out delay-100"
-                strokeOpacity="0.75"
-              />
-              <path
-                d="M 45 440 L 45 250 A 185 185 0 0 1 415 250 L 415 440"
-                stroke="#FD853A"
-                strokeWidth="2"
-                className="transition-all duration-500 ease-out delay-150"
-                strokeOpacity="0.9"
-              />
-              <path
-                d="M 25 440 L 25 250 A 205 205 0 0 1 435 250 L 435 440"
-                stroke="#FD853A"
-                strokeWidth="1.8"
-                className="transition-all duration-500 ease-out delay-200"
-                strokeOpacity="0.6"
-              />
-              <path
-                d="M 5 440 L 5 250 A 225 225 0 0 1 455 250 L 455 440"
-                stroke="#FD853A"
-                strokeWidth="1.5"
-                className="transition-all duration-500 ease-out delay-300"
-                strokeOpacity="0.35"
-              />
-            </svg>
+        <div className="relative w-full max-w-[440px] sm:max-w-[470px] lg:max-w-[500px] aspect-square group mx-auto lg:mx-0 flex items-center justify-center">
+          {/* Layer 1: Concentric Decorative Circles (Property 1=Variant2.svg) */}
+          <div className="absolute inset-0 z-0 flex items-center justify-center pointer-events-none">
+            <Image
+              src="/Property 1=Variant2.svg"
+              alt="Decorative Circles"
+              width={624}
+              height={680}
+              className="w-full h-full object-contain scale-105 pointer-events-none"
+              priority
+            />
           </div>
 
-          {/* Solid Orange Arch Pill Backdrop */}
-          <div className="absolute bottom-2 w-[72%] sm:w-[75%] h-[68%] sm:h-[72%] bg-[#FEB273] rounded-t-[130px] rounded-b-[44px] transition-transform duration-500 ease-out group-hover:scale-[1.02] z-10 shadow-md shadow-[#FD853A]/10" />
+          {/* Layer 2: Orange Rounded Backdrop Badge */}
+          <div className="absolute z-1 w-[62%] sm:w-[60%] h-[72%] sm:h-[70%] bottom-[4%] bg-[#FD853A] rounded-[42px] sm:rounded-[56px] shadow-sm pointer-events-none" />
 
-          {/* Swapnil Dalavi Pointing Image */}
-          <Image
-            src="/hire_me.png"
-            alt="Why Hire Me - Swapnil Dalavi"
-            fill
-            className="object-contain object-bottom z-20 transition-all duration-500 ease-out group-hover:scale-105 pointer-events-none"
-            priority
-          />
+          {/* Layer 3: Person Cutout (Swapnil Dalavi) */}
+          <div className="relative z-10 w-[88%] h-[94%] bottom-0 flex items-end justify-center pointer-events-none">
+            <Image
+              src="/hire_me.png"
+              alt="Why Hire Me - Swapnil Dalavi"
+              fill
+              className="object-contain object-bottom transition-transform duration-500 ease-out group-hover:scale-105 pointer-events-auto"
+              priority
+            />
+          </div>
         </div>
 
         <div className="w-full max-w-xl flex flex-col items-start gap-8">
