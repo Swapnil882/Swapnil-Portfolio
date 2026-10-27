@@ -91,7 +91,7 @@ export default function Home() {
               priority
             />
 
-            <div className="absolute bottom-[10%] z-30 w-full hidden md:flex justify-center">
+            <div className="absolute bottom-[16%] z-30 w-full hidden md:flex justify-center">
               <DualToggleButtons />
             </div>
           </div>
