@@ -312,28 +312,6 @@ export const portfolioData: PortfolioItem[] = [
     github: "https://github.com/Swapnil882",
     caseStudy: "#",
   },
-  {
-    image: "/resume_screening.png",
-    title: "AI Resume Screening",
-    href: "#",
-    desc: "AI-powered recruitment system featuring resume parsing, skill extraction, candidate ranking, and job matching analytics using NLP and Scikit-learn.",
-    tags: ["Python", "FastAPI", "NLP", "Scikit-learn", "Machine Learning"],
-    category: ["AI/ML", "Backend"],
-    liveDemo: "#",
-    github: "https://github.com/Swapnil882",
-    caseStudy: "#",
-  },
-  {
-    image: "/car_rental.png",
-    title: "Car Rental System",
-    href: "#",
-    desc: "Designed and developed a Car Rental System with user login, booking, automated rental cost calculation, and an admin panel for fleet management.",
-    tags: ["Python", "MySQL", "JavaScript", "HTML5", "CSS3"],
-    category: ["Web Apps", "Backend"],
-    liveDemo: "#",
-    github: "https://github.com/Swapnil882",
-    caseStudy: "#",
-  },
 ];
 
 export const reviews: Review[] = [
