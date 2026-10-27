@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { Lock, ExternalLink, Github, ArrowUpRight } from 'lucide-react';
+import { Lock, Github } from 'lucide-react';
 import { PortfolioItem } from '@/data/data';
 
 interface PortfolioCardProps extends PortfolioItem {
@@ -9,29 +9,17 @@ interface PortfolioCardProps extends PortfolioItem {
 const PortfolioCard: React.FC<PortfolioCardProps> = ({
   image,
   title,
-  href,
   desc,
   tags,
   category,
-  liveDemo,
   github,
   priority = false,
 }) => {
-  const hasLiveDemo = Boolean(liveDemo && liveDemo.trim() !== "" && liveDemo !== "#");
   const hasGithub = Boolean(github && github.trim() !== "" && github !== "#");
-  const hasDirectLink = Boolean(href && href.trim() !== "" && href !== "#");
   const primaryCategory = category && category.length > 0 ? category[0] : (tags[0] || "Project");
 
   // Format clean address bar URL
   const getDisplayUrl = () => {
-    if (hasLiveDemo && liveDemo) {
-      try {
-        const parsed = new URL(liveDemo);
-        return parsed.hostname.replace(/^www\./, "");
-      } catch {
-        return liveDemo.replace(/^https?:\/\//, "").replace(/\/$/, "");
-      }
-    }
     if (title.toLowerCase().includes("bynaus")) return "app.bynaus.ai";
     if (title.toLowerCase().includes("walstar")) return "walstareducation.com";
     if (title.toLowerCase().includes("chatbot")) return "ai-assistant.local:8000";
@@ -41,14 +29,13 @@ const PortfolioCard: React.FC<PortfolioCardProps> = ({
   };
 
   const displayUrl = getDisplayUrl();
-  const targetUrl = hasLiveDemo ? liveDemo : (hasDirectLink ? href : undefined);
 
   return (
     <div
       className="group relative w-full h-full flex flex-col rounded-xl sm:rounded-2xl 
         bg-[#141414] border border-white/10 hover:border-[#FD853A]/50 
         transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-[#FD853A]/10 
-        overflow-hidden cursor-pointer"
+        overflow-hidden select-none"
       style={{
         boxShadow: '0 8px 24px -8px rgba(0, 0, 0, 0.4)',
       }}
@@ -76,37 +63,16 @@ const PortfolioCard: React.FC<PortfolioCardProps> = ({
         </div>
       </div>
 
-      {/* 2. Compact Viewport Screen */}
+      {/* 2. Compact Viewport Screen (No domain redirect on click) */}
       <div className="relative w-full h-[160px] sm:h-[185px] md:h-[200px] bg-[#181818] overflow-hidden border-b border-white/10 shrink-0">
-        {targetUrl ? (
-          <a
-            href={targetUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={`Open ${title} live preview`}
-            className="block w-full h-full relative"
-          >
-            <Image
-              src={image}
-              alt={title}
-              fill
-              className="object-cover object-top transition-transform duration-500 ease-out group-hover:scale-[1.03]"
-              priority={priority}
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent pointer-events-none opacity-40 group-hover:opacity-10 transition-opacity" />
-          </a>
-        ) : (
-          <>
-            <Image
-              src={image}
-              alt={title}
-              fill
-              className="object-cover object-top transition-transform duration-500 ease-out group-hover:scale-[1.03]"
-              priority={priority}
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent pointer-events-none opacity-40 group-hover:opacity-10 transition-opacity" />
-          </>
-        )}
+        <Image
+          src={image}
+          alt={title}
+          fill
+          className="object-cover object-top transition-transform duration-500 ease-out group-hover:scale-[1.03]"
+          priority={priority}
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent pointer-events-none opacity-40 group-hover:opacity-10 transition-opacity" />
       </div>
 
       {/* 3. Compact Content Section Below Image */}
@@ -118,17 +84,10 @@ const PortfolioCard: React.FC<PortfolioCardProps> = ({
               {title}
             </h3>
 
-            {hasLiveDemo ? (
-              <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/25 text-[9px] font-semibold tracking-wider uppercase shrink-0">
-                <span className="w-1 h-1 rounded-full bg-emerald-400 animate-pulse" />
-                Live Demo
-              </span>
-            ) : (
-              <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-white/5 text-zinc-400 border border-white/10 text-[9px] font-medium tracking-wide uppercase shrink-0">
-                <span className="w-1 h-1 rounded-full bg-[#FD853A]" />
-                Production
-              </span>
-            )}
+            <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/25 text-[9px] font-semibold tracking-wider uppercase shrink-0">
+              <span className="w-1 h-1 rounded-full bg-emerald-400 animate-pulse" />
+              Production
+            </span>
           </div>
 
           <p className="text-zinc-400 text-xs sm:text-[13px] leading-relaxed mt-1.5 line-clamp-2 min-h-[2.4rem]">
@@ -156,18 +115,6 @@ const PortfolioCard: React.FC<PortfolioCardProps> = ({
         {/* Actions Footer */}
         <div className="flex items-center justify-between pt-2.5 border-t border-white/10 mt-auto">
           <div className="flex items-center gap-2">
-            {hasLiveDemo && (
-              <a
-                href={liveDemo}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#FD853A] hover:bg-[#e46e24] text-white text-xs font-semibold transition-all duration-200 shadow-md shadow-[#FD853A]/20 hover:scale-[1.02]"
-              >
-                <span>Launch Demo</span>
-                <ExternalLink size={12} />
-              </a>
-            )}
-
             {hasGithub && (
               <a
                 href={github}
@@ -176,29 +123,19 @@ const PortfolioCard: React.FC<PortfolioCardProps> = ({
                 className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 text-zinc-300 hover:text-white text-xs font-medium transition-colors"
               >
                 <Github size={13} />
-                <span>Code</span>
+                <span>Source Code</span>
               </a>
             )}
 
-            {!hasLiveDemo && !hasGithub && (
-              <span className="inline-flex items-center gap-1.5 text-[11px] text-zinc-400 font-medium py-0.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#FD853A]" />
-                Enterprise Platform
-              </span>
-            )}
+            <span className="inline-flex items-center gap-1.5 text-[11px] text-zinc-400 font-medium py-0.5">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#FD853A]" />
+              Enterprise Architecture
+            </span>
           </div>
 
-          {hasDirectLink && (
-            <a
-              href={href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-xs text-zinc-400 hover:text-[#FD853A] font-medium flex items-center gap-1 transition-colors"
-            >
-              <span>Visit</span>
-              <ArrowUpRight size={13} />
-            </a>
-          )}
+          <span className="text-[11px] text-zinc-500 font-medium">
+            Internal Platform
+          </span>
         </div>
       </div>
     </div>
