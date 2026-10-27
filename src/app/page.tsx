@@ -35,10 +35,10 @@ export default function Home() {
               </button>
             </ClientOnly>
             <div className="flex flex-col sm:flex-row sm:gap-2 items-center sm:items-end lg:-mt-4">
-              <CustomeText title={hero.prefix} className="text-[#171717] font-semibold text-4xl sm:text-5xl md:text-7xl xl:text-[70px]" />
+              <CustomeText title={hero.prefix} className="text-[#171717] font-semibold text-3xl sm:text-5xl md:text-7xl xl:text-[70px]" />
               <div className="flex items-end gap-2 sm:gap-1">
-                <CustomeText title={hero.name} className="text-[#FD853A] font-semibold text-4xl sm:text-5xl md:text-7xl xl:text-[70px]" />
-                <CustomeText title={ hero.lastName} className="text-[#171717] font-semibold text-4xl sm:text-5xl md:text-7xl xl:text-[70px]" />
+                <CustomeText title={hero.name} className="text-[#FD853A] font-semibold text-3xl sm:text-5xl md:text-7xl xl:text-[70px]" />
+                <CustomeText title={ hero.lastName} className="text-[#171717] font-semibold text-3xl sm:text-5xl md:text-7xl xl:text-[70px]" />
               </div>
             </div>
             <div className="flex flex-wrap items-center justify-center gap-x-2.5 gap-y-1 text-xl sm:text-2xl md:text-3xl lg:text-[34px] font-bold text-center -mt-0.5 tracking-tight">
@@ -72,7 +72,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="relative w-full max-w-[952px] flex-1 md:flex-none md:aspect-[3/2] flex flex-col items-center justify-center translate-y-0 md:-translate-y-[20%] mx-auto px-4">
+          <div className="relative w-full max-w-[952px] flex-1 min-h-[340px] sm:min-h-[400px] md:min-h-0 md:flex-none md:aspect-[3/2] flex flex-col items-center justify-center translate-y-0 md:-translate-y-[20%] mx-auto px-2 sm:px-4">
             <div className="absolute bottom-0 z-0 w-[90%] max-w-[812px] aspect-[2/1] overflow-hidden flex items-center justify-center pointer-events-auto">
               <div className="absolute w-full h-full bg-[#FEB273] rounded-t-full" />
             </div>
@@ -97,7 +97,7 @@ export default function Home() {
               priority
             />
 
-            <div className="absolute bottom-[11%] z-30 w-full hidden md:flex justify-center">
+            <div className="absolute bottom-[8%] sm:bottom-[10%] md:bottom-[11%] z-30 w-full flex justify-center">
               <DualToggleButtons />
             </div>
           </div>
@@ -123,8 +123,8 @@ export default function Home() {
       <ExperienceSection />
 
       {/* Hire Me */}
-      <div className="w-full flex flex-col lg:flex-row items-center justify-between px-6 lg:px-[71px] py-10 lg:py-12 bg-[#F2F4F7] rounded-[32px] lg:rounded-[50px] gap-12 lg:gap-[96px]">
-        <div className="relative w-full max-w-[440px] sm:max-w-[480px] lg:max-w-[510px] aspect-[624/680] group mx-auto lg:mx-0 flex items-center justify-center cursor-pointer select-none">
+      <div className="w-full flex flex-col lg:flex-row items-center justify-between px-4 sm:px-8 lg:px-[71px] py-8 sm:py-10 lg:py-12 bg-[#F2F4F7] rounded-[28px] sm:rounded-[36px] lg:rounded-[50px] gap-8 sm:gap-10 lg:gap-[96px]">
+        <div className="relative w-full max-w-[340px] sm:max-w-[440px] md:max-w-[480px] lg:max-w-[510px] aspect-[624/680] group mx-auto lg:mx-0 flex items-center justify-center cursor-pointer select-none">
           {/* Layer 1: Concentric Decorative Circles (Property 1=Variant2.svg) - Clearly visible, blooms/opens on hover */}
           <div className="absolute inset-0 z-0 flex items-center justify-center pointer-events-none overflow-visible">
             <svg
@@ -200,17 +200,17 @@ export default function Home() {
         </div>
 
         <div className="w-full max-w-xl flex flex-col items-start gap-8">
-          <div className="flex flex-wrap text-4xl sm:text-5xl lg:text-6xl font-semibold gap-2">
+          <div className="flex flex-wrap text-3xl sm:text-4xl lg:text-6xl font-semibold gap-2 justify-center lg:justify-start">
             <CustomeText title="Why" className="text-[#344054]" />
             <CustomeText title="Hire me" className="text-[#FD853A]" />
             <CustomeText title="?" className="text-[#344054]" />
           </div>
 
-          <p className="text-[#98A2B3] text-base sm:text-lg lg:text-xl leading-relaxed max-w-md">
+          <p className="text-[#98A2B3] text-base sm:text-lg lg:text-xl leading-relaxed max-w-md text-center lg:text-left">
             I enjoy solving real-world business problems by combining scalable backend architectures, REST APIs, database optimization, and intelligent AI/ML systems.
           </p>
 
-          <div className="flex flex-wrap gap-x-12 gap-y-8 w-full">
+          <div className="flex flex-wrap gap-x-8 sm:gap-x-12 gap-y-6 sm:gap-y-8 w-full justify-center lg:justify-start">
             {stats.map((stat, index) => (
               <div key={index} className="flex flex-col">
                 <CustomeText

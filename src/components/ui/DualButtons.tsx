@@ -19,17 +19,17 @@ export default function DualToggleButtons() {
   ];
 
   return (
-    <div className="flex border-1 border-white bg-white/10 backdrop-blur-[5px] rounded-full gap-2 p-[6px] w-fit h-[52px] items-center justify-center">
+    <div className="flex border border-white/60 bg-black/25 backdrop-blur-md rounded-full gap-1.5 sm:gap-2 p-1 sm:p-[6px] w-fit h-[46px] sm:h-[52px] items-center justify-center shadow-lg">
       {options.map((option) => (
         <button
           key={option.key}
           onMouseEnter={() => setActive(option.key as typeof active)}
           onClick={() => goTo(option.target)}
-          className={`group flex items-center justify-center gap-2 px-4 py-2 rounded-[60px] transition-all duration-300 ease-in-out cursor-pointer
+          className={`group flex items-center justify-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-[60px] transition-all duration-300 ease-in-out cursor-pointer select-none
             ${
               active === option.key
-                ? "bg-[#FD853A] text-white font-medium text-base w-[180px] h-[44px] border border-[#D0D5DD] shadow-md"
-                : "bg-transparent text-white font-light text-sm w-[120px] h-[40px]"
+                ? "bg-[#FD853A] text-white font-semibold text-xs sm:text-base w-[130px] sm:w-[155px] md:w-[180px] h-[38px] sm:h-[44px] border border-white/20 shadow-md"
+                : "bg-transparent text-white/90 font-medium text-xs sm:text-sm w-[90px] sm:w-[105px] md:w-[120px] h-[36px] sm:h-[40px] hover:text-white"
             }`}
         >
           {option.label}
