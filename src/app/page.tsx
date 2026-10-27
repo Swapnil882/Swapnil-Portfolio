@@ -93,11 +93,11 @@ export default function Home() {
               alt="Swapnil Dalavi"
               width={1254}
               height={1254}
-              className="absolute inset-0 z-20 w-auto h-auto max-w-[280px] sm:max-w-[300px] md:max-w-[320px] lg:max-w-[340px] max-h-[400px] md:max-h-[430px] lg:max-h-[450px] object-contain object-bottom mx-auto md:static md:mt-6"
+              className="absolute bottom-0 z-20 w-auto h-auto max-w-[280px] sm:max-w-[310px] md:max-w-[340px] lg:max-w-[370px] max-h-[420px] sm:max-h-[450px] md:max-h-[480px] lg:max-h-[510px] object-contain object-bottom mx-auto pointer-events-auto"
               priority
             />
 
-            <div className="absolute bottom-[16%] z-30 w-full hidden md:flex justify-center">
+            <div className="absolute bottom-[11%] z-30 w-full hidden md:flex justify-center">
               <DualToggleButtons />
             </div>
           </div>
