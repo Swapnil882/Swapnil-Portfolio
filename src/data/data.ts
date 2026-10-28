@@ -7,6 +7,8 @@ export interface Experience {
   location: string;
   highlights: string[];
   dotColor: string;
+  techStack: string[];
+  isCurrent?: boolean;
 }
 
 export interface Stat {
@@ -138,8 +140,9 @@ export const experiences: Experience[] = [
   {
     company: "Walstar Technologies Pvt. Ltd",
     duration: "Jun 2025 – Present",
-    role: "Backend Developer — Bynaus AI",
+    role: "Backend Developer — Bynaus AI & Walstar Education",
     location: "Kolhapur, Maharashtra",
+    isCurrent: true,
     highlights: [
       "Built Python/FastAPI backend for Bynaus AI (Construction Takeoff Platform), automating quantity takeoff from construction drawings with human verification for estimators.",
       "Engineered backend microservices and APIs for Walstar Education (School SaaS), enabling multi-tenant school onboarding, student/staff records management, and automated AI exam question generation.",
@@ -148,6 +151,7 @@ export const experiences: Experience[] = [
       "Improved PDF architectural vector detection (walls, doors) and callback reliability with retry/DLQ patterns.",
       "Added Pytest coverage and merged mission-critical production PRs on bynaus-ai-companion and bynausai-vector-engines repositories.",
     ],
+    techStack: ["Python", "FastAPI", "PostgreSQL", "PostGIS", "MongoDB", "AWS S3", "Pytest", "Microservices"],
     dotColor: "bg-[#FD853A]",
   },
   {
@@ -155,10 +159,12 @@ export const experiences: Experience[] = [
     duration: "Jun 2025 – Aug 2025",
     role: "Intern (Python & NLP)",
     location: "Remote / India",
+    isCurrent: false,
     highlights: [
       "Developed an intelligent movie review sentiment analysis system using NLP and Machine Learning to classify reviews as positive, negative, or neutral.",
       "Collected and processed large datasets of movie reviews, performed text preprocessing and feature extraction, and built sentiment classification models to generate audience opinion insights and trend analytics.",
     ],
+    techStack: ["Python", "NLP", "Scikit-learn", "Machine Learning", "Sentiment Analysis", "Text Preprocessing"],
     dotColor: "bg-[#344054]",
   },
   {
@@ -166,12 +172,14 @@ export const experiences: Experience[] = [
     duration: "Jun 2024 – Aug 2024",
     role: "Data Science & ML Intern",
     location: "Kolhapur, Maharashtra",
+    isCurrent: false,
     highlights: [
       "Developed ML models for prediction and classification on real-world datasets.",
       "Applied NLP techniques for text analytics and sentiment analysis pipelines.",
       "Automated data workflows and built reusable Python scripts for data processing.",
       "Collaborated with the team to deliver project demos and technical documentation.",
     ],
+    techStack: ["Python", "Machine Learning", "Data Analytics", "Pandas", "NumPy", "Automation Scripts"],
     dotColor: "bg-[#FD853A]",
   },
 ];
@@ -269,6 +277,28 @@ export const blogs: Blog[] = [
 ];
 
 export const portfolioData: PortfolioItem[] = [
+  {
+    image: "/market_yard_admin.png",
+    title: "Market Yard Admin (APMC)",
+    href: "#",
+    desc: "Enterprise agricultural market yard platform digitizing produce intake, weighbridge operations, lot ticketing, and auction rate tracking with offline-resilient sync, bilingual UI, and daily turnover reconciliation.",
+    tags: ["Python", "FastAPI", "PostgreSQL", "SQLAlchemy", "React.js", "React Native", "Pytest"],
+    category: ["Backend", "Web Apps"],
+    liveDemo: "",
+    github: "#",
+    caseStudy: "#",
+  },
+  {
+    image: "/gcn_platform.png",
+    title: "GCN Client Platform",
+    href: "#",
+    desc: "Autonomous lead discovery & outreach automation platform combining a Python/FastAPI microservice, n8n orchestration, and React operations dashboard with Decodo proxy crawling, identity extraction, and Playwright form automation.",
+    tags: ["Python", "FastAPI", "n8n", "Playwright", "React", "Tailwind CSS", "Vite", "Web Scraping"],
+    category: ["AI/ML", "Backend", "Web Apps"],
+    liveDemo: "",
+    github: "#",
+    caseStudy: "#",
+  },
   {
     image: "/bynaus_dashboard.svg",
     title: "Bynaus AI",

@@ -20,6 +20,8 @@ const PortfolioCard: React.FC<PortfolioCardProps> = ({
 
   // Format clean address bar URL
   const getDisplayUrl = () => {
+    if (title.toLowerCase().includes("market")) return "admin.marketyard.in";
+    if (title.toLowerCase().includes("gcn")) return "operations.gcnportal.com";
     if (title.toLowerCase().includes("bynaus")) return "app.bynaus.ai";
     if (title.toLowerCase().includes("walstar")) return "walstareducation.com";
     if (title.toLowerCase().includes("chatbot")) return "ai-assistant.local:8000";

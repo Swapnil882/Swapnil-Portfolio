@@ -2,6 +2,7 @@
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Autoplay } from 'swiper/modules';
+import type { Swiper as SwiperClass } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import { useEffect, useState } from 'react';
@@ -25,6 +26,7 @@ interface GenericSliderProps<T extends AllowedCard> {
   slidesPerView: number;
   heightClass?: string;
   cardType: 'hover' | 'portfolio' | 'review' | 'blog';
+  onSwiperInstance?: (swiper: SwiperClass) => void;
 }
 
 export function GenericSlider<T extends AllowedCard>({
@@ -32,10 +34,16 @@ export function GenericSlider<T extends AllowedCard>({
   slidesPerView,
   heightClass,
   cardType,
+  onSwiperInstance,
 }: GenericSliderProps<T>) {
   const [isClient, setIsClient] = useState(false);
   const isReview = cardType === 'review';
   const isPortfolio = cardType === 'portfolio';
+
+  // Prevent Swiper loop glitch when slide count <= slidesPerView
+  const minSlidesForLoop = isPortfolio ? 3 : (isReview ? 4 : 3);
+  const canLoop = data.length >= minSlidesForLoop;
+  const canAutoplay = data.length > (isPortfolio ? 2 : (isReview ? 3 : 2));
 
   useEffect(() => {
     setIsClient(true);
@@ -96,13 +104,23 @@ export function GenericSlider<T extends AllowedCard>({
       <div className={`w-full px-4 sm:px-6 lg:px-0 ${!isReview ? 'max-w-[1440px]' : ''}`}>
         <Swiper
           modules={[Pagination, Autoplay]}
+          onSwiper={(swiper) => {
+            if (onSwiperInstance) onSwiperInstance(swiper);
+          }}
           spaceBetween={20}
           centeredSlides={false}
-          loop={true}
-          autoplay={{
-            delay: 3000,
-            disableOnInteraction: false,
-          }}
+          speed={750}
+          grabCursor={true}
+          loop={canLoop}
+          autoplay={
+            canAutoplay
+              ? {
+                  delay: 3500,
+                  disableOnInteraction: false,
+                  pauseOnMouseEnter: true,
+                }
+              : false
+          }
           pagination={{ clickable: true }}
           breakpoints={{
             0: {
@@ -131,7 +149,7 @@ export function GenericSlider<T extends AllowedCard>({
           {data.map((item, index) => (
             <SwiperSlide
               key={index}
-              className={`${isReview ? '!flex' : '!flex justify-center'}`}
+              className={`${isReview ? '!flex !h-auto' : '!flex justify-center !h-auto py-1.5'}`}
             >
               {cardType === 'hover' && 'title' in item && 'description' in item && 'tech' in item && (
                 <ServicesCard title={item.title} description={item.description} tech={item.tech} imageSrc={item.imageSrc} priority={index === 0} />

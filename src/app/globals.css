@@ -14,6 +14,15 @@
     }
 }
 
+.swiper-wrapper {
+  transition-timing-function: cubic-bezier(0.25, 1, 0.5, 1) !important;
+}
+
+.swiper-slide {
+  height: auto !important;
+  display: flex !important;
+}
+
 .swiper-pagination-bullets {
   bottom: 0px !important;
   display: flex !important;
